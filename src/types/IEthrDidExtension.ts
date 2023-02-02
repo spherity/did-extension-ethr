@@ -1,22 +1,11 @@
 import { IPluginMethodMap, IAgentContext, IDIDManager, IKeyManager } from '@veramo/core'
 
 /**
- * My Agent Plugin description.
+ * Extension of did-provider-ethr with method-specific features.
  *
- * This is the interface that describes what your plugin can do.
- * The methods listed here, will be directly available to the veramo agent where your plugin is going to be used.
- * Depending on the agent configuration, other agent plugins, as well as the application where the agent is used
- * will be able to call these methods.
- *
- * To build a schema for your plugin using standard tools, you must link to this file in package.json.
- * Example:
- * ```
- * "veramo": {
- *    "pluginInterfaces": {
- *      "IMyAgentPlugin": "./src/types/IEthrDidExtension.ts"
- *    }
- *  },
- * ```
+ * Due to the generalized-structure of AbstractIdentifierProvider that is being implemented by EthrDIDProvider,
+ * it is not desired to add did:ethr specific functionality to it. This plugin provides some additional
+ * functionality that is specific to did:ethr, like changing the owner of an identifier.
  *
  * @beta
  */
