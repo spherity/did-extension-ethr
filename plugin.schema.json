@@ -1,49 +1,35 @@
 {
-  "IMyAgentPlugin": {
+  "IEthrDidExtension": {
     "components": {
       "schemas": {
-        "IMyAgentPluginFooArgs": {
+        "IEthrChangeControllerKeyArgs": {
           "type": "object",
           "properties": {
             "did": {
               "type": "string",
-              "description": "Decentralized identifier"
+              "description": "The identity's DID to change the controller key for"
             },
-            "bar": {
+            "kid": {
               "type": "string",
-              "description": "Lorem ipsum"
-            },
-            "foo": {
-              "type": "string",
-              "description": "Dolorem"
+              "description": "kid of the new controller key"
             }
           },
           "required": [
             "did",
-            "bar",
-            "foo"
+            "kid"
           ],
-          "description": "Arguments needed for  {@link  MyAgentPlugin.myPluginFoo } \nTo be able to export a plugin schema, your plugin methods should use an `args` parameter of a named type or interface."
-        },
-        "IMyAgentPluginFooResult": {
-          "type": "object",
-          "properties": {
-            "foobar": {
-              "type": "string"
-            },
-            "baz": {}
-          },
-          "description": "Result of  {@link  MyAgentPlugin.myPluginFoo } \nTo be able to export a plugin schema, your plugin return types need to be Promises of a named type or interface."
+          "description": "Arguments needed for {@link EthrDidExtension.ethrChangeControllerKey}"
         }
       },
       "methods": {
-        "myPluginFoo": {
-          "description": "Your plugin method description",
+        "ethrChangeControllerKey": {
+          "description": "Change controller/ owner of an did:ethr identity",
           "arguments": {
-            "$ref": "#/components/schemas/IMyAgentPluginFooArgs"
+            "$ref": "#/components/schemas/IEthrChangeControllerKeyArgs"
           },
           "returnType": {
-            "$ref": "#/components/schemas/IMyAgentPluginFooResult"
+            "type": "string",
+            "description": "The transaction hash of the changeOwner transaction"
           }
         }
       }

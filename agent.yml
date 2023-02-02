@@ -67,7 +67,7 @@ constants:
     - getVerifiableCredentialsForSdr
     - validatePresentationAgainstSdr
     # template: add your plugin methods here too. This assumes that your plugin is added to the agent. See below, toward the end of this config file.
-    - myPluginFoo
+    - ethrChangeControllerKey
 
 # Database
 dbConnection:
@@ -219,9 +219,6 @@ keyManager:
                 - $require: '@veramo/kms-local#SecretBox'
                   $args:
                     - $ref: /constants/secretKey
-        # template: you can install your own Key Management System implementation too
-        my:
-          $require: ./build#MyKeyManagementSystem
 
 # DID Manager
 didManager:
@@ -279,4 +276,4 @@ agent:
           $args:
             - $ref: /dbConnection
           # template: install your plugin on the `@veramo/cli` agent
-        - $require: ./build#MyAgentPlugin
+        - $require: ./build#EthrDidExtension

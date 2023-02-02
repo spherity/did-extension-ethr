@@ -19,10 +19,10 @@ your own implementations for key management and storage, or for DID storage.
 An agent plugin for Veramo is a class that provides some methods to be called on the agent object, and also emit and
 listen to agent events triggered by other plugins.
 
-This repository has an example of such a class in [`./src/agent/my-plugin.ts`](./src/agent/my-plugin.ts) that provides
+This repository has an example of such a class in [`./src/agent/did-extension-ethr.ts`](./src/agent/did-extension-ethr.ts) that provides
 the `myPluginFoo()` method and listens to `validatedMessage` events and emits `my-event` and `my-other-event`.
 
-The types associated with this plugin are declared in [`./src/types/IMyAgentPlugin.ts`](./src/types/IMyAgentPlugin.ts)
+The types associated with this plugin are declared in [`./src/types/IEthrDidExtension.ts`](./src/types/IEthrDidExtension.ts)
 
 Adding a declaration for this in `package.json` makes it easier to programmatically generate a schema for your plugin:
 
@@ -31,7 +31,7 @@ Adding a declaration for this in `package.json` makes it easier to programmatica
   //...
   "veramo": {
     "pluginInterfaces": {
-      "IMyAgentPlugin": "./src/types/IMyAgentPlugin.ts"
+      "IMyAgentPlugin": "./src/types/IEthrDidExtension.ts"
     }
   }
 }

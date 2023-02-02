@@ -1,4 +1,4 @@
-import { IPluginMethodMap, IAgentContext, IDIDManager, IResolver } from '@veramo/core'
+import { IPluginMethodMap, IAgentContext, IDIDManager, IKeyManager } from '@veramo/core'
 
 /**
  * My Agent Plugin description.
@@ -13,59 +13,34 @@ import { IPluginMethodMap, IAgentContext, IDIDManager, IResolver } from '@veramo
  * ```
  * "veramo": {
  *    "pluginInterfaces": {
- *      "IMyAgentPlugin": "./src/types/IMyAgentPlugin.ts"
+ *      "IMyAgentPlugin": "./src/types/IEthrDidExtension.ts"
  *    }
  *  },
  * ```
  *
  * @beta
  */
-export interface IMyAgentPlugin extends IPluginMethodMap {
+export interface IEthrDidExtension extends IPluginMethodMap {
   /**
-   * Your plugin method description
+   * Change controller/ owner of an did:ethr identity
    *
    * @param args - Input parameters for this method
    * @param context - The required context where this method can run.
    *   Declaring a context type here lets other developers know which other plugins
    *   need to also be installed for this method to work.
+   * @returns Promise that resolves to a transaction hash
    */
-  myPluginFoo(args: IMyAgentPluginFooArgs, context: IRequiredContext): Promise<IMyAgentPluginFooResult>
+  ethrChangeControllerKey(args: IEthrChangeControllerKeyArgs, context: IRequiredContext): Promise<string>
 }
 
 /**
- * Arguments needed for {@link MyAgentPlugin.myPluginFoo}
- * To be able to export a plugin schema, your plugin methods should use an `args` parameter of a
- * named type or interface.
+ * Arguments needed for {@link EthrDidExtension.ethrChangeControllerKey}
  *
  * @beta
  */
-export interface IMyAgentPluginFooArgs {
-  /**
-   * Decentralized identifier
-   */
-  did: string
-
-  /**
-   * Lorem ipsum
-   */
-  bar: string
-
-  /**
-   * Dolorem
-   */
-  foo: string
-}
-
-/**
- * Result of {@link MyAgentPlugin.myPluginFoo}
- * To be able to export a plugin schema, your plugin return types need to be Promises of a
- * named type or interface.
- *
- * @beta
- */
-export type IMyAgentPluginFooResult = {
-  foobar?: string
-  baz?: any
+export interface IEthrChangeControllerKeyArgs {
+  did: string,
+  kid: string
 }
 
 /**
@@ -73,7 +48,7 @@ export type IMyAgentPluginFooResult = {
  * For this plugin to function properly, the agent needs to also have other plugins installed that implement the
  * interfaces declared here.
  * You can also define requirements on a more granular level, for each plugin method or event handler of your plugin.
- * 
+ *
  * @beta
  */
-export type IRequiredContext = IAgentContext<IResolver & IDIDManager>
+export type IRequiredContext = IAgentContext<IKeyManager & IDIDManager>

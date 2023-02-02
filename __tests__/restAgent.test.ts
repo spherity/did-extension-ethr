@@ -12,7 +12,7 @@ import { Server } from 'http'
 import { AgentRouter, RequestWithAgentRouter } from '@veramo/remote-server'
 import { getConfig } from '@veramo/cli/build/setup'
 import { createObjects } from '@veramo/cli/build/lib/objectCreator'
-import { IMyAgentPlugin } from '../src/types/IMyAgentPlugin'
+import { IMyAgentPlugin } from '../src/types/IEthrDidExtension'
 import fs from 'fs'
 
 jest.setTimeout(30000)

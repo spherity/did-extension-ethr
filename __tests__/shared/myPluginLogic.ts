@@ -1,5 +1,5 @@
 import { TAgent, IMessageHandler } from '@veramo/core'
-import { IMyAgentPlugin } from '../../src/types/IMyAgentPlugin'
+import { IMyAgentPlugin } from '../../src/types/IEthrDidExtension'
 
 type ConfiguredAgent = TAgent<IMyAgentPlugin & IMessageHandler>
 

@@ -35,8 +35,6 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@veramo/core": "^4.0.0",
-    "@veramo/did-manager": "^4.0.0",
-    "@veramo/key-manager": "^4.0.0"
+    "@veramo/core": "^4.0.0"
   }
 }
