@@ -1,12 +1,12 @@
 {
-  "name": "veramo-plugin",
+  "name": "did-extension-ethr",
   "version": "1.0.0",
   "source": "src/index.ts",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "veramo": {
     "pluginInterfaces": {
-      "IMyAgentPlugin": "./src/types/IMyAgentPlugin.ts"
+      "IEthrDidExtension": "./src/types/IEthrDidExtension.ts"
     }
   },
   "scripts": {
