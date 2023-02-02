@@ -796,7 +796,7 @@
   dependencies:
     "@ethersproject/logger" "^5.7.0"
 
-"@ethersproject/providers@^5.6.8", "@ethersproject/providers@^5.7.1":
+"@ethersproject/providers@^5.6.8", "@ethersproject/providers@^5.7.0", "@ethersproject/providers@^5.7.1":
   version "5.7.2"
   resolved "https://registry.yarnpkg.com/@ethersproject/providers/-/providers-5.7.2.tgz#f8b1a4f275d7ce58cf0a2eec222269a08beb18cb"
   integrity sha512-g34EWZ1WWAVgr4aptGlVBF8mhl3VWjv+8hoAnzStu8Ah22VHBsuGzP17eb6xDVRzw895G4W7vvx60lFFur/1Rg==
@@ -859,7 +859,7 @@
     elliptic "6.5.4"
     hash.js "1.1.7"
 
-"@ethersproject/strings@^5.6.1", "@ethersproject/strings@^5.7.0":
+"@ethersproject/strings@^5.7.0":
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/@ethersproject/strings/-/strings-5.7.0.tgz#54c9d2a7c57ae8f1205c88a9d3a56471e14d5ed2"
   integrity sha512-/9nu+lj0YswRNSH0NXYqrh8775XNyEdUQAuf3f+SmOrnVewcJ5SBNAjF7lpgehKi4abvNNXyf+HX86czCdJ8Mg==
@@ -2051,7 +2051,6 @@
 
 "@veramo-community/lds-ecdsa-secp256k1-recovery2020@uport-project/EcdsaSecp256k1RecoverySignature2020":
   version "0.0.8"
-  uid ab0db52de6f4e6663ef271a48009ba26e688ef9b
   resolved "https://codeload.github.com/uport-project/EcdsaSecp256k1RecoverySignature2020/tar.gz/ab0db52de6f4e6663ef271a48009ba26e688ef9b"
   dependencies:
     "@bitauth/libauth" "^1.19.1"
@@ -2125,20 +2124,22 @@
     ws "^8.4.0"
     yaml "^2.0.0"
 
-"@veramo/core@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@veramo/core/-/core-4.0.0.tgz#587c818eab5204d17e8d8004f5f733284960985d"
-  integrity sha512-9oPW5xOPRbjqfbJBlsuhjgjKenmkJduWwWoR0jc5ViTnEeMJKokbyVD9J7E56acPLMVIoVcUqxYpkQ6W6D89xQ==
-  dependencies:
-    debug "^4.3.3"
-    did-jwt-vc "^3.1.0"
-    events "^3.2.0"
-    z-schema "^5.0.2"
-
 "@veramo/core@^4.1.1":
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/@veramo/core/-/core-4.1.1.tgz#9174e94db6d80dc3645e21ea814a84a83347766b"
   integrity sha512-gkmKhiCaop5XLa5qFqBNe38JQ3NmT/PvMQP7QMFTAmrdqIKR2upTa/ySGFaR5I53iLB039ifR59GS4WSz54mAw==
+  dependencies:
+    credential-status "^2.0.5"
+    debug "^4.3.3"
+    did-jwt-vc "^3.1.0"
+    did-resolver "^4.0.1"
+    events "^3.2.0"
+    z-schema "^5.0.2"
+
+"@veramo/core@^4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@veramo/core/-/core-4.3.0.tgz#47f2ecf9ce6ae5a77bf7e18e0e0e738967925999"
+  integrity sha512-9M4WfW5GNrb+O3Xndm+9HDoAo2JRgKrNC29+d/QzgA5Aosu1w0cY0IYba6FWXPRwpQkCiRI8An4j7/9Tk11E1Q==
   dependencies:
     credential-status "^2.0.5"
     debug "^4.3.3"
@@ -2213,20 +2214,20 @@
     uint8arrays "^3.0.0"
     uuid "^9.0.0"
 
-"@veramo/did-discovery@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@veramo/did-discovery/-/did-discovery-4.0.0.tgz#762d424f1720458629f69990461f0dbf2fcc2a1c"
-  integrity sha512-0GCPmswEUwKyisdTLJEDLryejP8U+H/JuGuNpHIxWf3FYi/HGqxkICo++Ac7TdF56dWyfyabFY/pBSOr1A5+uA==
-  dependencies:
-    "@veramo/core" "^4.0.0"
-    debug "^4.3.3"
-
 "@veramo/did-discovery@^4.1.1":
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/@veramo/did-discovery/-/did-discovery-4.1.1.tgz#fae30b156301df7072762f0cb8e52fba391f9175"
   integrity sha512-rmUhkO1IA5AjH5JW1In2f0BSawy/SZvhHjXtDFXomRhN0SCFW573q36E71YZstuN8P/eaOdzwA2jHQIU78KeQg==
   dependencies:
     "@veramo/core" "^4.1.1"
+    debug "^4.3.3"
+
+"@veramo/did-discovery@^4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@veramo/did-discovery/-/did-discovery-4.3.0.tgz#16cf61e305f6131514704b5a84de483352370f3d"
+  integrity sha512-K3Oalp8PucNxKx6mk5pJoPpa24mGJxRHsd+Oab+YCroyBhg5rEkZLwDOmPT+WjbxGeKSnXwEQuzxHW3IkwO9rA==
+  dependencies:
+    "@veramo/core" "^4.3.0"
     debug "^4.3.3"
 
 "@veramo/did-jwt@^4.1.1":
@@ -2240,14 +2241,6 @@
     did-jwt "^6.9.0"
     did-resolver "^4.0.1"
 
-"@veramo/did-manager@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@veramo/did-manager/-/did-manager-4.0.0.tgz#93d5611b4a81d67e4526ee2dfa403f5d1b9843e9"
-  integrity sha512-rgdfxsdpWnsNhT+UDoUYVB1ZQL/mnTaSC3P7oaVSQ7M6LBXDFPolOE8gmBGNt2y36f2PxqTqkfAyRo+jM2JgEw==
-  dependencies:
-    "@veramo/core" "^4.0.0"
-    "@veramo/did-discovery" "^4.0.0"
-
 "@veramo/did-manager@^4.1.1":
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/@veramo/did-manager/-/did-manager-4.1.1.tgz#42c7c9f46516cef17e927346ecbf86b1aa16b48f"
@@ -2255,6 +2248,14 @@
   dependencies:
     "@veramo/core" "^4.1.1"
     "@veramo/did-discovery" "^4.1.1"
+
+"@veramo/did-manager@^4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@veramo/did-manager/-/did-manager-4.3.0.tgz#aed966ea9f8d7b31de22d2e83602c3f5e6a58a89"
+  integrity sha512-eb1Gs/KNxNFZCLMsjhUXeBTb+l0tQBqLfnqczk+isnNWcRpljKh2jjvtsgy07i5Xu1iuQG3ErrF8Lad7K99Obg==
+  dependencies:
+    "@veramo/core" "^4.3.0"
+    "@veramo/did-discovery" "^4.3.0"
 
 "@veramo/did-provider-ethr@^4.1.2":
   version "4.1.2"
@@ -2270,6 +2271,25 @@
     "@ethersproject/transactions" "^5.7.0"
     "@veramo/core" "^4.1.1"
     "@veramo/did-manager" "^4.1.1"
+    debug "^4.3.3"
+    ethr-did "^2.3.6"
+
+"@veramo/did-provider-ethr@^4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@veramo/did-provider-ethr/-/did-provider-ethr-4.3.0.tgz#936f35360d0a8d673aa5499c23b0461bdb7b3b3d"
+  integrity sha512-uhvam+/VwAz4i2vmfOOYisJyiNBXxX5kA+Amtc2d9lO6m4hARdrI5XlaerPCJZFrfH4+MbUd4tPRuLnFwkpVsQ==
+  dependencies:
+    "@ethersproject/abstract-provider" "^5.7.0"
+    "@ethersproject/abstract-signer" "5.7.0"
+    "@ethersproject/address" "^5.7.0"
+    "@ethersproject/bignumber" "^5.7.0"
+    "@ethersproject/bytes" "^5.7.0"
+    "@ethersproject/properties" "^5.7.0"
+    "@ethersproject/providers" "^5.7.0"
+    "@ethersproject/signing-key" "^5.7.0"
+    "@ethersproject/transactions" "^5.7.0"
+    "@veramo/core" "^4.3.0"
+    "@veramo/did-manager" "^4.3.0"
     debug "^4.3.3"
     ethr-did "^2.3.6"
 
@@ -2306,20 +2326,6 @@
     cross-fetch "^3.1.4"
     debug "^4.3.3"
     did-resolver "^4.0.1"
-
-"@veramo/key-manager@^4.0.0":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@veramo/key-manager/-/key-manager-4.0.2.tgz#82babc9ed1d721e92df909d1e63d9473812846e5"
-  integrity sha512-AolT8T0GDmVawNMEOlfDtcMd0HbQnEnOrZ9OFpQVRqtpMEPylcZpPxcVFXbscGj+IHbv69/xestflDjRwfP0EA==
-  dependencies:
-    "@ethersproject/bytes" "^5.6.1"
-    "@ethersproject/strings" "^5.6.1"
-    "@ethersproject/transactions" "^5.6.2"
-    "@stablelib/ed25519" "^1.0.2"
-    "@veramo/core" "^4.0.0"
-    did-jwt "^6.6.0"
-    uint8arrays "^3.0.0"
-    uuid "^9.0.0"
 
 "@veramo/key-manager@^4.1.1":
   version "4.1.1"

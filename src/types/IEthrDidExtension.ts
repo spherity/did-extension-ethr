@@ -1,4 +1,5 @@
 import { IPluginMethodMap, IAgentContext, IDIDManager, IKeyManager } from '@veramo/core'
+import { TransactionOptions } from '@veramo/did-provider-ethr'
 
 /**
  * Extension of did-provider-ethr with method-specific features.
@@ -23,13 +24,14 @@ export interface IEthrDidExtension extends IPluginMethodMap {
 }
 
 /**
- * Arguments needed for {@link EthrDidExtension.ethrChangeControllerKey}
+ * Arguments needed for {@link IEthrDidExtension.ethrChangeControllerKey}
  *
  * @beta
  */
 export interface IEthrChangeControllerKeyArgs {
   did: string,
-  kid: string
+  kid: string,
+  options?: TransactionOptions
 }
 
 /**
