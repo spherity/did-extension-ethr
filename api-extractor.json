@@ -14,5 +14,5 @@
   "dtsRollup": {
     "enabled": false
   },
-  "mainEntryPointFilePath": "<projectFolder>/build/index.d.ts"
+  "mainEntryPointFilePath": "build/src/index.d.ts"
 }

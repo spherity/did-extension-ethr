@@ -230,11 +230,6 @@ didManager:
           - $ref: /dbConnection
       defaultProvider: did:ethr:goerli
       providers:
-        # template: you can install your customized DID provider like so
-        did:my:
-          $require: ./build#MyIdentifierProvider
-          $args:
-            - defaultKms: local
         did:ethr:
           $require: '@veramo/did-provider-ethr#EthrDIDProvider'
           $args:

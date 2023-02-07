@@ -14,7 +14,8 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "rootDir": "src",
-    "outDir": "build"
+    "outDir": "build",
+    "resolveJsonModule": true
   },
   "exclude": ["**/__tests__/**/*", "**/build/**/*"],
   "include": ["src/**/*"]
