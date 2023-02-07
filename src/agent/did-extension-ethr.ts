@@ -1,9 +1,17 @@
-import { IAgentPlugin } from '@veramo/core'
+import { IAgentPlugin, IIdentifier } from '@veramo/core'
 import { AbstractDIDStore } from '@veramo/did-manager'
-import { IEthrChangeControllerKeyArgs, IEthrDidExtension, IRequiredContext } from '../types/IEthrDidExtension'
+import {
+  EthrNetworkConfiguration,
+  IEthrChangeControllerKeyArgs,
+  IEthrDidExtension,
+  IRequiredContext,
+} from '../types/IEthrDidExtension'
 import { schema } from '../index'
 import { computeAddress } from '@ethersproject/transactions'
-import { EthrDIDProvider, EthrNetworkConfiguration } from '@veramo/did-provider-ethr'
+import { KmsEthereumSigner } from './kms-eth-signer'
+import { EthrDID } from 'ethr-did'
+import { BigNumber } from '@ethersproject/bignumber'
+
 export const DEFAULT_GAS_LIMIT = 100000
 
 /**
@@ -16,16 +24,14 @@ export class EthrDidExtension implements IAgentPlugin {
     ethrChangeControllerKey: this.ethrChangeControllerKey.bind(this),
   }
 
-  private defaultKms: string;
-  private store: AbstractDIDStore;
-  private networks: EthrNetworkConfiguration[];
-  private ehrDidProvider: EthrDIDProvider;
+  private defaultKms: string
+  private store: AbstractDIDStore
+  private networks: EthrNetworkConfiguration[]
 
   constructor(options: { store: AbstractDIDStore, defaultKms: string, networks: EthrNetworkConfiguration[] }) {
-    this.store = options.store;
-    this.defaultKms = options.defaultKms;
-    this.networks = options.networks;
-    this.ehrDidProvider = new EthrDIDProvider({ defaultKms: this.defaultKms, networks: this.networks })
+    this.store = options.store
+    this.defaultKms = options.defaultKms
+    this.networks = options.networks
   }
 
   /** {@inheritDoc IEthrDidExtension.ethrChangeControllerKey} */
@@ -37,9 +43,98 @@ export class EthrDidExtension implements IAgentPlugin {
     if (newOwnerKey.type !== 'Secp256k1') {
       throw new Error('EthrDIDProvider updateControllerKey only supports Secp256k1 keys.')
     }
+    if (identifier.controllerKeyId === args.kid) {
+      throw new Error('Key is already the controller for identifier.')
+    }
+
+    // Change owner aka controller key of the DID
     const address = computeAddress(`0x${newOwnerKey.publicKeyHex}`)
-    const ethrDid = await this.ehrDidProvider.getEthrDidController(identifier, context)
+    const ethrDid = await this.getEthrDidController(identifier, context)
     const txHash = await ethrDid.changeOwner(address, { ...args.options, gasLimit })
-    return txHash;
+
+    // Update the identifier in the store
+    identifier.keys = identifier.keys.filter((key) => key.kid !== identifier.controllerKeyId)
+    identifier.controllerKeyId = args.kid;
+    identifier.keys.push(newOwnerKey)
+    await this.store.import(identifier)
+
+    return txHash
+  }
+
+  private async getEthrDidController(
+    identifier: IIdentifier,
+    context: IRequiredContext,
+    metaIdentifierKeyId?: string,
+  ): Promise<EthrDID> {
+    if (identifier.controllerKeyId == null) {
+      throw new Error('invalid_argument: identifier does not list a `controllerKeyId`')
+    }
+    const controllerKey = await context.agent.keyManagerGet({ kid: identifier.controllerKeyId })
+    if (typeof controllerKey === 'undefined') {
+      throw new Error('invalid_argument: identifier.controllerKeyId is not managed by this agent')
+    }
+
+    // find network
+    const networkStringMatcher = /^did:ethr(:.+)?:(0x[0-9a-fA-F]{40}|0x[0-9a-fA-F]{66}).*$/
+    const matches = identifier.did.match(networkStringMatcher)
+    let network = this.getNetworkFor(matches?.[1]?.substring(1))
+    if (!matches || !network) {
+      throw new Error(`invalid_argument: cannot find network for ${identifier.did}`)
+    }
+
+    if (metaIdentifierKeyId) {
+      const metaControllerKey = await context.agent.keyManagerGet({ kid: metaIdentifierKeyId })
+      if (typeof metaControllerKey === 'undefined') {
+        throw new Error('invalid_argument: identifier.controllerKeyId is not managed by this agent')
+      }
+
+      // Identity owner signs payload but metaIdentifier send the tx (meta transaction; signed methods)
+      return new EthrDID({
+        identifier: identifier.did,
+        provider: network.provider,
+        chainNameOrId: network.name || network.chainId,
+        rpcUrl: network.rpcUrl,
+        registry: network.registry,
+        txSigner: new KmsEthereumSigner(metaControllerKey, context, network?.provider),
+      })
+    }
+
+    if (controllerKey.meta?.algorithms?.includes('eth_signTransaction')) {
+      return new EthrDID({
+        identifier: identifier.did,
+        provider: network.provider,
+        chainNameOrId: network.name || network.chainId,
+        rpcUrl: network.rpcUrl,
+        registry: network.registry,
+        txSigner: new KmsEthereumSigner(controllerKey, context, network?.provider),
+      })
+    } else {
+      // Web3Provider should perform signing and sending transaction
+      return new EthrDID({
+        identifier: identifier.did,
+        provider: network.provider,
+        chainNameOrId: network.name || network.chainId,
+        rpcUrl: network.rpcUrl,
+        registry: network.registry,
+      })
+    }
+  }
+
+  private getNetworkFor(networkSpecifier: string | number | undefined): EthrNetworkConfiguration | undefined {
+    let networkNameOrId: string | number = networkSpecifier || 'mainnet'
+    if (
+      typeof networkNameOrId === 'string' &&
+      (networkNameOrId.startsWith('0x') || parseInt(networkNameOrId) > 0)
+    ) {
+      networkNameOrId = BigNumber.from(networkNameOrId).toNumber()
+    }
+    let network = this.networks.find(
+      (n) => n.chainId === networkNameOrId || n.name === networkNameOrId || n.description === networkNameOrId,
+    )
+    if (!network && !networkSpecifier && this.networks.length === 1) {
+      network = this.networks[0]
+    }
+    return network
   }
 }
+
