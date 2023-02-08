@@ -78,7 +78,15 @@ export default (testContext: {
     })
 
     it('should allow new owner to make changes', async () => {
+      const bobDid = await agent.resolveDid({ didUrl: bob.did })
+      const aliceKey = await agent.keyManagerGet({ kid: alice.controllerKeyId! })
+      await agent.ethrChangeControllerKey({ did: bob.did, kid: alice.controllerKeyId! })
+      await agent.didManagerAddKey({ did: bob.did, key: aliceKey })
+      const updatedBobDidDoc = await agent.resolveDid({ didUrl: bob.did })
 
+
+      expect(updatedBobDidDoc.didDocument!.verificationMethod![1].id).toContain("delegate-1")
+      expect(updatedBobDidDoc.didDocument!.verificationMethod![1].type).toEqual("EcdsaSecp256k1VerificationKey2019")
     })
 
     it('should throw an error if key is not Secp256k1', async () => {
