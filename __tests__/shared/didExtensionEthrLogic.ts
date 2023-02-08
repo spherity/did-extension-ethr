@@ -13,8 +13,9 @@ export default (testContext: {
     let agent: ConfiguredAgent
     let alice: IIdentifier
     let bob: IIdentifier
+    let erika: IIdentifier
 
-    beforeEach(async () => {
+    beforeAll(async () => {
       await testContext.setup()
       agent = testContext.getAgent()
 
@@ -43,6 +44,20 @@ export default (testContext: {
             kms: 'local',
             type: 'Secp256k1',
             kid: 'bob-controller-key',
+          },
+        ],
+      })
+      erika = await agent.didManagerImport({
+        controllerKeyId: 'erika-controller-key',
+        did: 'did:ethr:ganache:02f9308a019258c31049344f85f89d5229b531c845836f99b08601f113bce036f9',
+        provider: 'did:ethr:ganache',
+        alias: 'erika-did-ethr',
+        keys: [
+          {
+            privateKeyHex: '0000000000000000000000000000000000000000000000000000000000000003',
+            kms: 'local',
+            type: 'Secp256k1',
+            kid: 'erika-controller-key',
           },
         ],
       })
@@ -76,8 +91,8 @@ export default (testContext: {
 
     it('should throw an error if key is already controller key', async () => {
       await expect(agent.ethrChangeControllerKey({
-        did: alice.did,
-        kid: alice.controllerKeyId!,
+        did: erika.did,
+        kid: erika.controllerKeyId!,
       })).rejects.toThrow('Key is already the controller for identifier.')
     })
   })
