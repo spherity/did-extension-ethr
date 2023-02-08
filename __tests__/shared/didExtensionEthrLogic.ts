@@ -117,7 +117,7 @@ export default (testContext: {
       })).rejects.toThrow('Key is already the controller for identifier.')
     })
 
-    it.only('should change owner via meta transaction', async () => {
+    it('should change owner via meta transaction', async () => {
       const klausDidDoc = await agent.resolveDid({ didUrl: klaus.did })
       // klaus change his dids controller to alice via meta transaction carried out by erika
       await agent.ethrChangeControllerKey({ did: klaus.did, kid: alice.controllerKeyId!, options: { metaIdentifierKeyId: erika.controllerKeyId } })
