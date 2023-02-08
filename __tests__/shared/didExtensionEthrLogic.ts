@@ -14,6 +14,7 @@ export default (testContext: {
     let alice: IIdentifier
     let bob: IIdentifier
     let erika: IIdentifier
+    let klaus: IIdentifier
 
     beforeAll(async () => {
       await testContext.setup()
@@ -49,7 +50,7 @@ export default (testContext: {
       })
       erika = await agent.didManagerImport({
         controllerKeyId: 'erika-controller-key',
-        did: 'did:ethr:ganache:02f9308a019258c31049344f85f89d5229b531c845836f99b08601f113bce036f9',
+        did: 'did:ethr:ganache:0x02f9308a019258c31049344f85f89d5229b531c845836f99b08601f113bce036f9',
         provider: 'did:ethr:ganache',
         alias: 'erika-did-ethr',
         keys: [
@@ -58,6 +59,20 @@ export default (testContext: {
             kms: 'local',
             type: 'Secp256k1',
             kid: 'erika-controller-key',
+          },
+        ],
+      })
+      klaus = await agent.didManagerImport({
+        controllerKeyId: 'klaus-controller-key',
+        did: 'did:ethr:ganache:0x02e493dbf1c10d80f3581e4904930b1404cc6c13900ee0758474fa94abe8c4cd13',
+        provider: 'did:ethr:ganache',
+        alias: 'klaus-did-ethr',
+        keys: [
+          {
+            privateKeyHex: '0000000000000000000000000000000000000000000000000000000000000004',
+            kms: 'local',
+            type: 'Secp256k1',
+            kid: 'klaus-controller-key',
           },
         ],
       })
@@ -100,6 +115,20 @@ export default (testContext: {
         did: erika.did,
         kid: erika.controllerKeyId!,
       })).rejects.toThrow('Key is already the controller for identifier.')
+    })
+
+    it.only('should change owner via meta transaction', async () => {
+      const klausDidDoc = await agent.resolveDid({ didUrl: klaus.did })
+      // klaus change his dids controller to alice via meta transaction carried out by erika
+      await agent.ethrChangeControllerKey({ did: klaus.did, kid: alice.controllerKeyId!, options: { metaIdentifierKeyId: erika.controllerKeyId } })
+      const updatedKlausDidDoc = await agent.resolveDid({ didUrl: klaus.did })
+
+      const aliceEthAddress = computeAddress(alice.did.split(':')[3])
+      const updatedIdentifier = await agent.didManagerGet({ did: klaus.did })
+
+      expect(updatedIdentifier.controllerKeyId).toEqual(klaus.controllerKeyId)
+      expect(updatedKlausDidDoc.didDocument!.id).toEqual(klausDidDoc.didDocument!.id)
+      expect(updatedKlausDidDoc.didDocument!.verificationMethod![0].blockchainAccountId).toContain(aliceEthAddress)
     })
   })
 }

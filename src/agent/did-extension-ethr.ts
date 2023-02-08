@@ -11,6 +11,7 @@ import { computeAddress } from '@ethersproject/transactions'
 import { KmsEthereumSigner } from './kms-eth-signer'
 import { EthrDID } from 'ethr-did'
 import { BigNumber } from '@ethersproject/bignumber'
+import { splitSignature } from '@ethersproject/bytes'
 
 export const DEFAULT_GAS_LIMIT = 100000
 
@@ -47,18 +48,33 @@ export class EthrDidExtension implements IAgentPlugin {
       throw new Error('Key is already the controller for identifier.')
     }
 
-    // Change owner aka controller key of the DID
     const address = computeAddress(`0x${newOwnerKey.publicKeyHex}`)
     const ethrDid = await this.getEthrDidController(identifier, context)
-    const txHash = await ethrDid.changeOwner(address, { ...args.options, gasLimit })
 
-    // Update the identifier in the store
-    identifier.keys = identifier.keys.filter((key) => key.kid !== identifier.controllerKeyId)
-    identifier.controllerKeyId = args.kid;
-    identifier.keys.push(newOwnerKey)
-    await this.store.import(identifier)
+    if (args.options?.metaIdentifierKeyId) {
+      const metaHash = await ethrDid.createChangeOwnerHash(address)
+      const canonicalSignature = await EthrDidExtension.createMetaSignature(context, identifier, metaHash)
 
-    return txHash
+      const metaEthrDid = await this.getEthrDidController(identifier, context, args.options.metaIdentifierKeyId)
+      delete args.options.metaIdentifierKeyId;
+      const txHash = await metaEthrDid.changeOwnerSigned(address, {
+        sigV: canonicalSignature.v,
+        sigR: canonicalSignature.r,
+        sigS: canonicalSignature.s,
+      }, { ...args.options, gasLimit })
+
+      return txHash
+    } else {
+      const txHash = await ethrDid.changeOwner(address, { ...args.options, gasLimit })
+
+      // Update the identifier in the store
+      identifier.keys = identifier.keys.filter((key) => key.kid !== identifier.controllerKeyId)
+      identifier.controllerKeyId = args.kid
+      identifier.keys.push(newOwnerKey)
+      await this.store.import(identifier)
+
+      return txHash
+    }
   }
 
   private async getEthrDidController(
@@ -135,6 +151,24 @@ export class EthrDidExtension implements IAgentPlugin {
       network = this.networks[0]
     }
     return network
+  }
+
+  private static async createMetaSignature(
+    context: IRequiredContext,
+    identifier: IIdentifier,
+    metaHash: string,
+  ) {
+    const controllerKey = await context.agent.keyManagerGet({ kid: identifier.controllerKeyId! })
+    if (typeof controllerKey === 'undefined') {
+      throw new Error('invalid_argument: identifier.controllerKeyId is not managed by this agent')
+    }
+    const signature = await context.agent.keyManagerSign({
+      keyRef: controllerKey.kid,
+      data: metaHash,
+      algorithm: 'eth_rawSign',
+      encoding: 'hex',
+    })
+    return splitSignature(signature)
   }
 }
 
