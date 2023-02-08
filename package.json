@@ -1,5 +1,5 @@
 {
-  "name": "did-extension-ethr",
+  "name": "@spherity/did-extension-ethr",
   "version": "1.0.0",
   "source": "src/index.ts",
   "main": "build/index.js",
