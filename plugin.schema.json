@@ -7,18 +7,39 @@
           "properties": {
             "did": {
               "type": "string",
-              "description": "The identity's DID to change the controller key for"
+              "description": "The DID of the identity to change the controller of"
             },
             "kid": {
               "type": "string",
-              "description": "kid of the new controller key"
+              "description": "The new controller key id of the identity"
+            },
+            "options": {
+              "$ref": "#/components/schemas/TransactionOptions",
+              "description": "Optional transaction options to control e.g. gas price and limit"
             }
           },
           "required": [
             "did",
             "kid"
           ],
-          "description": "Arguments needed for {@link EthrDidExtension.ethrChangeControllerKey}"
+          "description": "Arguments needed for  {@link  IEthrDidExtension.ethrChangeControllerKey }"
+        },
+        "TransactionOptions": {
+          "type": "object",
+          "properties": {
+            "ttl": {
+              "type": "number"
+            },
+            "encoding": {
+              "type": "string"
+            },
+            "metaIdentifierKeyId": {
+              "type": "string"
+            },
+            "gasLimit": {},
+            "gasPrice": {}
+          },
+          "description": "Possible options for transactions for `did:ethr`"
         }
       },
       "methods": {
@@ -28,8 +49,7 @@
             "$ref": "#/components/schemas/IEthrChangeControllerKeyArgs"
           },
           "returnType": {
-            "type": "string",
-            "description": "The transaction hash of the changeOwner transaction"
+            "type": "string"
           }
         }
       }

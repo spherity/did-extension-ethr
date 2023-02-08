@@ -1,0 +1,955 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.25.0",
+    "schemaVersion": 1006,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      },
+      "reportUnsupportedHtmlElements": false
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "did-extension-ethr!",
+  "docComment": "",
+  "name": "did-extension-ethr",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "did-extension-ethr!",
+      "name": "",
+      "members": [
+        {
+          "kind": "Class",
+          "canonicalReference": "did-extension-ethr!EthrDidExtension:class",
+          "docComment": "/**\n * Extension of did-provider-ethr with method-specific features.\n *\n * Due to the generalized-structure of AbstractIdentifierProvider that is being implemented by EthrDIDProvider, it is not desired to add did:ethr specific functionality to it. This plugin provides some additional functionality that is specific to did:ethr, like changing the owner of an identifier.\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class EthrDidExtension implements "
+            },
+            {
+              "kind": "Reference",
+              "text": "IAgentPlugin",
+              "canonicalReference": "@veramo/core!IAgentPlugin:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "EthrDidExtension",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "did-extension-ethr!EthrDidExtension:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `EthrDidExtension` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(options: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        store: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AbstractDIDStore",
+                  "canonicalReference": "@veramo/did-manager!AbstractDIDStore:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        defaultKms: string;\n        networks: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "EthrNetworkConfiguration",
+                  "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[];\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Beta",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 6
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "did-extension-ethr!EthrDidExtension#methods:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly methods: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IEthrDidExtension",
+                  "canonicalReference": "did-extension-ethr!IEthrDidExtension:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Beta",
+              "name": "methods",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "did-extension-ethr!EthrDidExtension#schema:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly schema: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Beta",
+              "name": "schema",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false
+            }
+          ],
+          "implementsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration:interface",
+          "docComment": "/**\n * Possible options for network configuration for `did:ethr`\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface EthrNetworkConfiguration "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "EthrNetworkConfiguration",
+          "members": [
+            {
+              "kind": "IndexSignature",
+              "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration:index(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "[index: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "]: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Beta",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "index",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration#chainId:member",
+              "docComment": "/**\n * The chain ID for the ethereum network being configured. This can be a hex-encoded string starting with `0x`. If `name` is not specified, then the hex encoded `chainId` will be used when creating DIDs, according to the `did:ethr` spec.\n *\n * Example, chainId==42 and name==undefined => DIDs are prefixed with `did:ethr:0x2a:`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "chainId?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "chainId",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration#name:member",
+              "docComment": "/**\n * The name of the network, for example 'mainnet', 'goerli', 'polygon'. If this is present, then DIDs anchored on this network will have a human-readable prefix, like `did:ethr:goerli:0x...`. See the {@link https://github.com/uport-project/ethr-did-registry#contract-deployments | official deployments} for a table of reusable names. If this parameter is not present, `chainId` MUST be specified.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "name?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration#provider:member",
+              "docComment": "/**\n * Web3 provider. This is used to interact with the ethereum network. When a web3 wallet is used here, it can also be used to sign transactions. Either a `provider` or a `rpcUrl` must be specified. `provider` takes precedence when both are used.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "provider?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Provider",
+                  "canonicalReference": "@ethersproject/abstract-provider!Provider:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "provider",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration#registry:member",
+              "docComment": "/**\n * The EIP1056 registry address for the ethereum network being configured.\n *\n * Please See the {@link https://github.com/uport-project/ethr-did-registry#contract-deployments | official deployments} for a table of known deployments.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "registry?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "registry",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration#rpcUrl:member",
+              "docComment": "/**\n * A JSON RPC URL for the ethereum network that is being used. Either a `provider` or a `rpcUrl` must be specified. `provider` takes precedence when both are used.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "rpcUrl?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "rpcUrl",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration#web3Provider:member",
+              "docComment": "/**\n * Equivalent to `provider` Web3 provider. This is used to interact with the ethereum network. When a web3 wallet is used here, it can also be used to sign transactions. Either a `provider` or a `rpcUrl` must be specified. `provider` takes precedence when both are used.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "web3Provider?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Provider",
+                  "canonicalReference": "@ethersproject/abstract-provider!Provider:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "web3Provider",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "did-extension-ethr!IEthrChangeControllerKeyArgs:interface",
+          "docComment": "/**\n * Arguments needed for {@link IEthrDidExtension.ethrChangeControllerKey}\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IEthrChangeControllerKeyArgs "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "IEthrChangeControllerKeyArgs",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "did-extension-ethr!IEthrChangeControllerKeyArgs#did:member",
+              "docComment": "/**\n * The DID of the identity to change the controller of\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "did: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Beta",
+              "name": "did",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "did-extension-ethr!IEthrChangeControllerKeyArgs#kid:member",
+              "docComment": "/**\n * The new controller key id of the identity\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "kid: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Beta",
+              "name": "kid",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "did-extension-ethr!IEthrChangeControllerKeyArgs#options:member",
+              "docComment": "/**\n * Optional transaction options to control e.g. gas price and limit\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TransactionOptions",
+                  "canonicalReference": "did-extension-ethr!TransactionOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "options",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "did-extension-ethr!IEthrDidExtension:interface",
+          "docComment": "/**\n * Extension of did-provider-ethr with method-specific features.\n *\n * Due to the generalized-structure of AbstractIdentifierProvider that is being implemented by EthrDIDProvider, it is not desired to add did:ethr specific functionality to it. This plugin provides some additional functionality that is specific to did:ethr, like changing the owner of an identifier.\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IEthrDidExtension extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "IPluginMethodMap",
+              "canonicalReference": "@veramo/core!IPluginMethodMap:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "IEthrDidExtension",
+          "members": [
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "did-extension-ethr!IEthrDidExtension#ethrChangeControllerKey:member(1)",
+              "docComment": "/**\n * Change controller/ owner of an did:ethr identity\n *\n * @param args - Input parameters for this method\n *\n * @param context - The required context where this method can run. Declaring a context type here lets other developers know which other plugins need to also be installed for this method to work.\n *\n * @returns Promise that resolves to a transaction hash\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "ethrChangeControllerKey(args: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IEthrChangeControllerKeyArgs",
+                  "canonicalReference": "did-extension-ethr!IEthrChangeControllerKeyArgs:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", context: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IRequiredContext",
+                  "canonicalReference": "did-extension-ethr!IRequiredContext:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              },
+              "releaseTag": "Beta",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "args",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "context",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ],
+              "name": "ethrChangeControllerKey"
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "did-extension-ethr!IRequiredContext:type",
+          "docComment": "/**\n * This context describes the requirements of this plugin. For this plugin to function properly, the agent needs to also have other plugins installed that implement the interfaces declared here. You can also define requirements on a more granular level, for each plugin method or event handler of your plugin.\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type IRequiredContext = "
+            },
+            {
+              "kind": "Reference",
+              "text": "IAgentContext",
+              "canonicalReference": "@veramo/core!IAgentContext:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "IKeyManager",
+              "canonicalReference": "@veramo/core!IKeyManager:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " & "
+            },
+            {
+              "kind": "Reference",
+              "text": "IDIDManager",
+              "canonicalReference": "@veramo/core!IDIDManager:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "IRequiredContext",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 7
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "did-extension-ethr!schema:var",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "schema: "
+            },
+            {
+              "kind": "Content",
+              "text": "any"
+            }
+          ],
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "schema",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "did-extension-ethr!TransactionOptions:interface",
+          "docComment": "/**\n * Possible options for transactions for `did:ethr`\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface TransactionOptions "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "TransactionOptions",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "did-extension-ethr!TransactionOptions#encoding:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "encoding?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "encoding",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "did-extension-ethr!TransactionOptions#gasLimit:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "gasLimit?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "gasLimit",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "did-extension-ethr!TransactionOptions#gasPrice:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "gasPrice?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "gasPrice",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "did-extension-ethr!TransactionOptions#metaIdentifierKeyId:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "metaIdentifierKeyId?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "metaIdentifierKeyId",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "did-extension-ethr!TransactionOptions#ttl:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "ttl?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "ttl",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        }
+      ]
+    }
+  ]
+}

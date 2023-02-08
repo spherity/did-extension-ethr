@@ -1,5 +1,4 @@
 import { IPluginMethodMap, IAgentContext, IDIDManager, IKeyManager } from '@veramo/core'
-import { TransactionRequest } from '@ethersproject/providers'
 import { Provider } from '@ethersproject/abstract-provider'
 
 /**
@@ -24,10 +23,17 @@ export interface IEthrDidExtension extends IPluginMethodMap {
   ethrChangeControllerKey(args: IEthrChangeControllerKeyArgs, context: IRequiredContext): Promise<string>
 }
 
-export interface TransactionOptions extends TransactionRequest {
+/**
+ * Possible options for transactions for `did:ethr`
+ *
+ * @beta
+ */
+export interface TransactionOptions { // extends TransactionRequest {
   ttl?: number
   encoding?: string
   metaIdentifierKeyId?: string
+  gasLimit?: any, // The BigNumberish from ethersproject kills the api extractor
+  gasPrice?: any, // The BigNumberish from ethersproject kills the api extractor
 }
 
 /**
@@ -36,8 +42,19 @@ export interface TransactionOptions extends TransactionRequest {
  * @beta
  */
 export interface IEthrChangeControllerKeyArgs {
+  /**
+   * The DID of the identity to change the controller of
+   */
   did: string,
+
+  /**
+   * The new controller key id of the identity
+   */
   kid: string,
+
+  /**
+   * Optional transaction options to control e.g. gas price and limit
+   */
   options?: TransactionOptions
 }
 
