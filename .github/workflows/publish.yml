@@ -15,7 +15,7 @@ jobs:
       - run: npm run test:ci
 
   publish-npm:
-    needs: build
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
