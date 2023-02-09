@@ -161,18 +161,18 @@
     }
   },
   "kind": "Package",
-  "canonicalReference": "did-extension-ethr!",
+  "canonicalReference": "@spherity/did-extension-ethr!",
   "docComment": "",
-  "name": "did-extension-ethr",
+  "name": "@spherity/did-extension-ethr",
   "members": [
     {
       "kind": "EntryPoint",
-      "canonicalReference": "did-extension-ethr!",
+      "canonicalReference": "@spherity/did-extension-ethr!",
       "name": "",
       "members": [
         {
           "kind": "Class",
-          "canonicalReference": "did-extension-ethr!EthrDidExtension:class",
+          "canonicalReference": "@spherity/did-extension-ethr!EthrDidExtension:class",
           "docComment": "/**\n * Extension of did-provider-ethr with method-specific features.\n *\n * Due to the generalized-structure of AbstractIdentifierProvider that is being implemented by EthrDIDProvider, it is not desired to add did:ethr specific functionality to it. This plugin provides some additional functionality that is specific to did:ethr, like changing the owner of an identifier.\n *\n * @beta\n */\n",
           "excerptTokens": [
             {
@@ -194,7 +194,7 @@
           "members": [
             {
               "kind": "Constructor",
-              "canonicalReference": "did-extension-ethr!EthrDidExtension:constructor(1)",
+              "canonicalReference": "@spherity/did-extension-ethr!EthrDidExtension:constructor(1)",
               "docComment": "/**\n * Constructs a new instance of the `EthrDidExtension` class\n */\n",
               "excerptTokens": [
                 {
@@ -217,7 +217,7 @@
                 {
                   "kind": "Reference",
                   "text": "EthrNetworkConfiguration",
-                  "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration:interface"
+                  "canonicalReference": "@spherity/did-extension-ethr!EthrNetworkConfiguration:interface"
                 },
                 {
                   "kind": "Content",
@@ -244,7 +244,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "did-extension-ethr!EthrDidExtension#methods:member",
+              "canonicalReference": "@spherity/did-extension-ethr!EthrDidExtension#methods:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -254,7 +254,7 @@
                 {
                   "kind": "Reference",
                   "text": "IEthrDidExtension",
-                  "canonicalReference": "did-extension-ethr!IEthrDidExtension:interface"
+                  "canonicalReference": "@spherity/did-extension-ethr!IEthrDidExtension:interface"
                 },
                 {
                   "kind": "Content",
@@ -274,7 +274,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "did-extension-ethr!EthrDidExtension#schema:member",
+              "canonicalReference": "@spherity/did-extension-ethr!EthrDidExtension#schema:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -311,7 +311,7 @@
         },
         {
           "kind": "Interface",
-          "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration:interface",
+          "canonicalReference": "@spherity/did-extension-ethr!EthrNetworkConfiguration:interface",
           "docComment": "/**\n * Possible options for network configuration for `did:ethr`\n *\n * @beta\n */\n",
           "excerptTokens": [
             {
@@ -324,7 +324,7 @@
           "members": [
             {
               "kind": "IndexSignature",
-              "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration:index(1)",
+              "canonicalReference": "@spherity/did-extension-ethr!EthrNetworkConfiguration:index(1)",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -367,7 +367,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration#chainId:member",
+              "canonicalReference": "@spherity/did-extension-ethr!EthrNetworkConfiguration#chainId:member",
               "docComment": "/**\n * The chain ID for the ethereum network being configured. This can be a hex-encoded string starting with `0x`. If `name` is not specified, then the hex encoded `chainId` will be used when creating DIDs, according to the `did:ethr` spec.\n *\n * Example, chainId==42 and name==undefined => DIDs are prefixed with `did:ethr:0x2a:`\n */\n",
               "excerptTokens": [
                 {
@@ -394,7 +394,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration#name:member",
+              "canonicalReference": "@spherity/did-extension-ethr!EthrNetworkConfiguration#name:member",
               "docComment": "/**\n * The name of the network, for example 'mainnet', 'goerli', 'polygon'. If this is present, then DIDs anchored on this network will have a human-readable prefix, like `did:ethr:goerli:0x...`. See the {@link https://github.com/uport-project/ethr-did-registry#contract-deployments | official deployments} for a table of reusable names. If this parameter is not present, `chainId` MUST be specified.\n */\n",
               "excerptTokens": [
                 {
@@ -421,7 +421,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration#provider:member",
+              "canonicalReference": "@spherity/did-extension-ethr!EthrNetworkConfiguration#provider:member",
               "docComment": "/**\n * Web3 provider. This is used to interact with the ethereum network. When a web3 wallet is used here, it can also be used to sign transactions. Either a `provider` or a `rpcUrl` must be specified. `provider` takes precedence when both are used.\n */\n",
               "excerptTokens": [
                 {
@@ -449,7 +449,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration#registry:member",
+              "canonicalReference": "@spherity/did-extension-ethr!EthrNetworkConfiguration#registry:member",
               "docComment": "/**\n * The EIP1056 registry address for the ethereum network being configured.\n *\n * Please See the {@link https://github.com/uport-project/ethr-did-registry#contract-deployments | official deployments} for a table of known deployments.\n */\n",
               "excerptTokens": [
                 {
@@ -476,7 +476,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration#rpcUrl:member",
+              "canonicalReference": "@spherity/did-extension-ethr!EthrNetworkConfiguration#rpcUrl:member",
               "docComment": "/**\n * A JSON RPC URL for the ethereum network that is being used. Either a `provider` or a `rpcUrl` must be specified. `provider` takes precedence when both are used.\n */\n",
               "excerptTokens": [
                 {
@@ -503,7 +503,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "did-extension-ethr!EthrNetworkConfiguration#web3Provider:member",
+              "canonicalReference": "@spherity/did-extension-ethr!EthrNetworkConfiguration#web3Provider:member",
               "docComment": "/**\n * Equivalent to `provider` Web3 provider. This is used to interact with the ethereum network. When a web3 wallet is used here, it can also be used to sign transactions. Either a `provider` or a `rpcUrl` must be specified. `provider` takes precedence when both are used.\n */\n",
               "excerptTokens": [
                 {
@@ -534,7 +534,7 @@
         },
         {
           "kind": "Interface",
-          "canonicalReference": "did-extension-ethr!IEthrChangeControllerKeyArgs:interface",
+          "canonicalReference": "@spherity/did-extension-ethr!IEthrChangeControllerKeyArgs:interface",
           "docComment": "/**\n * Arguments needed for {@link IEthrDidExtension.ethrChangeControllerKey}\n *\n * @beta\n */\n",
           "excerptTokens": [
             {
@@ -547,7 +547,7 @@
           "members": [
             {
               "kind": "PropertySignature",
-              "canonicalReference": "did-extension-ethr!IEthrChangeControllerKeyArgs#did:member",
+              "canonicalReference": "@spherity/did-extension-ethr!IEthrChangeControllerKeyArgs#did:member",
               "docComment": "/**\n * The DID of the identity to change the controller of\n */\n",
               "excerptTokens": [
                 {
@@ -574,7 +574,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "did-extension-ethr!IEthrChangeControllerKeyArgs#kid:member",
+              "canonicalReference": "@spherity/did-extension-ethr!IEthrChangeControllerKeyArgs#kid:member",
               "docComment": "/**\n * The new controller key id of the identity\n */\n",
               "excerptTokens": [
                 {
@@ -601,7 +601,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "did-extension-ethr!IEthrChangeControllerKeyArgs#options:member",
+              "canonicalReference": "@spherity/did-extension-ethr!IEthrChangeControllerKeyArgs#options:member",
               "docComment": "/**\n * Optional transaction options to control e.g. gas price and limit\n */\n",
               "excerptTokens": [
                 {
@@ -611,7 +611,7 @@
                 {
                   "kind": "Reference",
                   "text": "TransactionOptions",
-                  "canonicalReference": "did-extension-ethr!TransactionOptions:interface"
+                  "canonicalReference": "@spherity/did-extension-ethr!TransactionOptions:interface"
                 },
                 {
                   "kind": "Content",
@@ -632,7 +632,7 @@
         },
         {
           "kind": "Interface",
-          "canonicalReference": "did-extension-ethr!IEthrDidExtension:interface",
+          "canonicalReference": "@spherity/did-extension-ethr!IEthrDidExtension:interface",
           "docComment": "/**\n * Extension of did-provider-ethr with method-specific features.\n *\n * Due to the generalized-structure of AbstractIdentifierProvider that is being implemented by EthrDIDProvider, it is not desired to add did:ethr specific functionality to it. This plugin provides some additional functionality that is specific to did:ethr, like changing the owner of an identifier.\n *\n * @beta\n */\n",
           "excerptTokens": [
             {
@@ -654,7 +654,7 @@
           "members": [
             {
               "kind": "MethodSignature",
-              "canonicalReference": "did-extension-ethr!IEthrDidExtension#ethrChangeControllerKey:member(1)",
+              "canonicalReference": "@spherity/did-extension-ethr!IEthrDidExtension#ethrChangeControllerKey:member(1)",
               "docComment": "/**\n * Change controller/ owner of an did:ethr identity\n *\n * @param args - Input parameters for this method\n *\n * @param context - The required context where this method can run. Declaring a context type here lets other developers know which other plugins need to also be installed for this method to work.\n *\n * @returns Promise that resolves to a transaction hash\n */\n",
               "excerptTokens": [
                 {
@@ -664,7 +664,7 @@
                 {
                   "kind": "Reference",
                   "text": "IEthrChangeControllerKeyArgs",
-                  "canonicalReference": "did-extension-ethr!IEthrChangeControllerKeyArgs:interface"
+                  "canonicalReference": "@spherity/did-extension-ethr!IEthrChangeControllerKeyArgs:interface"
                 },
                 {
                   "kind": "Content",
@@ -673,7 +673,7 @@
                 {
                   "kind": "Reference",
                   "text": "IRequiredContext",
-                  "canonicalReference": "did-extension-ethr!IRequiredContext:type"
+                  "canonicalReference": "@spherity/did-extension-ethr!IRequiredContext:type"
                 },
                 {
                   "kind": "Content",
@@ -730,7 +730,7 @@
         },
         {
           "kind": "TypeAlias",
-          "canonicalReference": "did-extension-ethr!IRequiredContext:type",
+          "canonicalReference": "@spherity/did-extension-ethr!IRequiredContext:type",
           "docComment": "/**\n * This context describes the requirements of this plugin. For this plugin to function properly, the agent needs to also have other plugins installed that implement the interfaces declared here. You can also define requirements on a more granular level, for each plugin method or event handler of your plugin.\n *\n * @beta\n */\n",
           "excerptTokens": [
             {
@@ -778,7 +778,7 @@
         },
         {
           "kind": "Variable",
-          "canonicalReference": "did-extension-ethr!schema:var",
+          "canonicalReference": "@spherity/did-extension-ethr!schema:var",
           "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -800,7 +800,7 @@
         },
         {
           "kind": "Interface",
-          "canonicalReference": "did-extension-ethr!TransactionOptions:interface",
+          "canonicalReference": "@spherity/did-extension-ethr!TransactionOptions:interface",
           "docComment": "/**\n * Possible options for transactions for `did:ethr`\n *\n * @beta\n */\n",
           "excerptTokens": [
             {
@@ -813,7 +813,7 @@
           "members": [
             {
               "kind": "PropertySignature",
-              "canonicalReference": "did-extension-ethr!TransactionOptions#encoding:member",
+              "canonicalReference": "@spherity/did-extension-ethr!TransactionOptions#encoding:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -840,7 +840,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "did-extension-ethr!TransactionOptions#gasLimit:member",
+              "canonicalReference": "@spherity/did-extension-ethr!TransactionOptions#gasLimit:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -867,7 +867,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "did-extension-ethr!TransactionOptions#gasPrice:member",
+              "canonicalReference": "@spherity/did-extension-ethr!TransactionOptions#gasPrice:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -894,7 +894,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "did-extension-ethr!TransactionOptions#metaIdentifierKeyId:member",
+              "canonicalReference": "@spherity/did-extension-ethr!TransactionOptions#metaIdentifierKeyId:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -921,7 +921,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "did-extension-ethr!TransactionOptions#ttl:member",
+              "canonicalReference": "@spherity/did-extension-ethr!TransactionOptions#ttl:member",
               "docComment": "",
               "excerptTokens": [
                 {

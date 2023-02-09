@@ -1,4 +1,4 @@
-# did-extension-ethr
+# Veramo Extension Plugin for did:ethr
 
 This Veramo plugin extends the functionality of `did-provider-ethr` by exposing a new method `ethrChangeControllerKey`
 which allows the owner of a `did:ethr` to change its owner and therefor its controller. Meta transactions are support as
@@ -7,10 +7,10 @@ well by providing a `metaIdentifierKeyId` in the options.
 ## Quick start
 
 * Clone this repo
-* `yarn`
-* `yarn build` or `yarn watch`
-* `yarn generate-plugin-schema`
-* `yarn start` or VSCode Debugger (CMD + Shift + D) > Run `OpenAPI server`
+* `npm ci`
+* `npm run build`
+* `npm run generate-plugin-schema`
+* `npm run start` or VSCode Debugger (CMD + Shift + D) > Run `OpenAPI server`
 
 ## Usage
 
