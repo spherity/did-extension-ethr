@@ -50,6 +50,7 @@ export class EthrDidExtension implements IAgentPlugin {
 
     const address = computeAddress(`0x${newOwnerKey.publicKeyHex}`)
     const ethrDid = await this.getEthrDidController(identifier, context)
+    let txHash: string;
 
     if (args.options?.metaIdentifierKeyId) {
       const metaHash = await ethrDid.createChangeOwnerHash(address)
@@ -57,24 +58,22 @@ export class EthrDidExtension implements IAgentPlugin {
 
       const metaEthrDid = await this.getEthrDidController(identifier, context, args.options.metaIdentifierKeyId)
       delete args.options.metaIdentifierKeyId;
-      const txHash = await metaEthrDid.changeOwnerSigned(address, {
+      txHash = await metaEthrDid.changeOwnerSigned(address, {
         sigV: canonicalSignature.v,
         sigR: canonicalSignature.r,
         sigS: canonicalSignature.s,
       }, { ...args.options, gasLimit })
-
-      return txHash
     } else {
-      const txHash = await ethrDid.changeOwner(address, { ...args.options, gasLimit })
-
-      // Update the identifier in the store
-      identifier.keys = identifier.keys.filter((key) => key.kid !== identifier.controllerKeyId)
-      identifier.controllerKeyId = args.kid
-      identifier.keys.push(newOwnerKey)
-      await this.store.import(identifier)
-
-      return txHash
+      txHash = await ethrDid.changeOwner(address, { ...args.options, gasLimit })
     }
+
+    // Update the identifier in the store
+    identifier.keys = identifier.keys.filter((key) => key.kid !== identifier.controllerKeyId)
+    identifier.controllerKeyId = args.kid
+    identifier.keys.push(newOwnerKey)
+    await this.store.import(identifier)
+
+    return txHash
   }
 
   private async getEthrDidController(
