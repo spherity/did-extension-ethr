@@ -1,6 +1,6 @@
 import { IDataStore, IDataStoreORM, IDIDManager, IIdentifier, IKeyManager, IResolver, TAgent } from '@veramo/core'
 import { computeAddress } from '@ethersproject/transactions'
-import { IEthrDidExtension } from '../../src/types/IEthrDidExtension'
+import { IEthrDidExtension } from '../../src'
 
 type ConfiguredAgent = TAgent<IDIDManager & IKeyManager & IEthrDidExtension & IDataStore & IDataStoreORM & IResolver>
 
@@ -126,7 +126,7 @@ export default (testContext: {
       const aliceEthAddress = computeAddress(alice.did.split(':')[3])
       const updatedIdentifier = await agent.didManagerGet({ did: klaus.did })
 
-      expect(updatedIdentifier.controllerKeyId).toEqual(klaus.controllerKeyId)
+      expect(updatedIdentifier.controllerKeyId).toEqual(alice.controllerKeyId)
       expect(updatedKlausDidDoc.didDocument!.id).toEqual(klausDidDoc.didDocument!.id)
       expect(updatedKlausDidDoc.didDocument!.verificationMethod![0].blockchainAccountId).toContain(aliceEthAddress)
     })

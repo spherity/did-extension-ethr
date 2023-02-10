@@ -1,5 +1,4 @@
 import { DataSource } from 'typeorm'
-import { EthrDidExtension, IEthrDidExtension } from '../build'
 import { KeyManagementSystem, SecretBox } from '@veramo/kms-local'
 import { DataStore, DataStoreORM, DIDStore, Entities, KeyStore, migrations, PrivateKeyStore } from '@veramo/data-store'
 import {
@@ -25,6 +24,7 @@ import { AgentRouter, RequestWithAgentRouter } from '@veramo/remote-server'
 import express from 'express'
 import { Server } from 'http'
 import DidExtensionEthrLogic from './shared/didExtensionEthrLogic'
+import { EthrDidExtension, IEthrDidExtension } from '../src'
 
 const databaseFile = `./tmp/rest-database-${Math.random().toPrecision(5)}.sqlite`
 const infuraProjectId = '3586660d179141e3801c3895de1c2eba'
