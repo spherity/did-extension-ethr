@@ -19,7 +19,7 @@ import { DIDResolverPlugin } from '@veramo/did-resolver'
 import { EthrDIDProvider } from '@veramo/did-provider-ethr'
 import { AgentRestClient } from '@veramo/remote-client'
 import { createGanacheProvider } from './utils/ganache-provider'
-import { getResolver as ethrDidResolver } from 'ethr-did-resolver'
+import { getResolver as ethrDidResolver } from '@spherity/ethr-did-resolver'
 import { AgentRouter, RequestWithAgentRouter } from '@veramo/remote-server'
 import express from 'express'
 import { Server } from 'http'
@@ -101,7 +101,7 @@ const setup = async (options?: IAgentOptions): Promise<boolean> => {
         defaultKms: 'local',
         networks: [
           {
-            chainId: 1337,
+            chainId: BigInt(1337),
             name: 'ganache',
             provider,
             registry,
@@ -114,7 +114,7 @@ const setup = async (options?: IAgentOptions): Promise<boolean> => {
           networks: [
             {
               name: 'ganache',
-              chainId: 1337,
+              chainId: BigInt(1337),
               provider,
               registry,
             },

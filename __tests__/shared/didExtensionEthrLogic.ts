@@ -1,5 +1,5 @@
 import { IDataStore, IDataStoreORM, IDIDManager, IIdentifier, IKeyManager, IResolver, TAgent } from '@veramo/core'
-import { computeAddress } from '@ethersproject/transactions'
+import { computeAddress } from 'ethers'
 import { IEthrDidExtension } from '../../src'
 
 type ConfiguredAgent = TAgent<IDIDManager & IKeyManager & IEthrDidExtension & IDataStore & IDataStoreORM & IResolver>

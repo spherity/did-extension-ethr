@@ -7,11 +7,9 @@ import {
   IRequiredContext,
 } from '../types/IEthrDidExtension'
 import { schema } from '../index'
-import { computeAddress } from '@ethersproject/transactions'
+import { computeAddress, Signature } from 'ethers'
 import { KmsEthereumSigner } from './kms-eth-signer'
-import { EthrDID } from 'ethr-did'
-import { BigNumber } from '@ethersproject/bignumber'
-import { splitSignature } from '@ethersproject/bytes'
+import { EthrDID } from '@spherity/ethr-did'
 
 export const DEFAULT_GAS_LIMIT = 100000
 
@@ -96,6 +94,9 @@ export class EthrDidExtension implements IAgentPlugin {
     if (!matches || !network) {
       throw new Error(`invalid_argument: cannot find network for ${identifier.did}`)
     }
+    if (!network.provider) {
+      throw new Error(`The network's provider is not set: ${network.name || network.chainId}`)
+    }
 
     if (metaIdentifierKeyId) {
       const metaControllerKey = await context.agent.keyManagerGet({ kid: metaIdentifierKeyId })
@@ -110,7 +111,7 @@ export class EthrDidExtension implements IAgentPlugin {
         chainNameOrId: network.name || network.chainId,
         rpcUrl: network.rpcUrl,
         registry: network.registry,
-        txSigner: new KmsEthereumSigner(metaControllerKey, context, network?.provider),
+        txSigner: new KmsEthereumSigner(metaControllerKey, context, network.provider),
       })
     }
 
@@ -121,7 +122,7 @@ export class EthrDidExtension implements IAgentPlugin {
         chainNameOrId: network.name || network.chainId,
         rpcUrl: network.rpcUrl,
         registry: network.registry,
-        txSigner: new KmsEthereumSigner(controllerKey, context, network?.provider),
+        txSigner: new KmsEthereumSigner(controllerKey, context, network.provider),
       })
     } else {
       // Web3Provider should perform signing and sending transaction
@@ -135,13 +136,12 @@ export class EthrDidExtension implements IAgentPlugin {
     }
   }
 
-  private getNetworkFor(networkSpecifier: string | number | undefined): EthrNetworkConfiguration | undefined {
-    let networkNameOrId: string | number = networkSpecifier || 'mainnet'
+  private getNetworkFor(networkSpecifier: string | bigint | undefined): EthrNetworkConfiguration | undefined {
+    let networkNameOrId: string | bigint = networkSpecifier || 'mainnet'
     if (
       typeof networkNameOrId === 'string' &&
       (networkNameOrId.startsWith('0x') || parseInt(networkNameOrId) > 0)
     ) {
-      networkNameOrId = BigNumber.from(networkNameOrId).toNumber()
     }
     let network = this.networks.find(
       (n) => n.chainId === networkNameOrId || n.name === networkNameOrId || n.description === networkNameOrId,
@@ -167,7 +167,7 @@ export class EthrDidExtension implements IAgentPlugin {
       algorithm: 'eth_rawSign',
       encoding: 'hex',
     })
-    return splitSignature(signature)
+    return Signature.from(signature)
   }
 }
 

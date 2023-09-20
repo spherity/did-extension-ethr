@@ -19,7 +19,7 @@ import { createGanacheProvider } from './utils/ganache-provider'
 import fs from 'fs'
 import { EthrDIDProvider } from '@veramo/did-provider-ethr'
 import { DIDResolverPlugin } from '@veramo/did-resolver'
-import { getResolver as ethrDidResolver } from 'ethr-did-resolver'
+import { getResolver as ethrDidResolver } from '@spherity/ethr-did-resolver'
 import { EthrDidExtension } from '../src'
 
 jest.setTimeout(30000)
@@ -65,7 +65,7 @@ const setup = async (options?: IAgentOptions): Promise<boolean> => {
             ttl: 60 * 60 * 24 * 30 * 12 + 1,
             networks: [
               {
-                chainId: 1337,
+                chainId: BigInt(1337),
                 name: 'ganache',
                 provider,
                 registry,
@@ -79,7 +79,7 @@ const setup = async (options?: IAgentOptions): Promise<boolean> => {
         defaultKms: 'local',
         networks: [
           {
-            chainId: 1337,
+            chainId: BigInt(1337),
             name: 'ganache',
             provider,
             registry,
@@ -92,7 +92,7 @@ const setup = async (options?: IAgentOptions): Promise<boolean> => {
           networks: [
             {
               name: 'ganache',
-              chainId: 1337,
+              chainId: BigInt(1337),
               provider,
               registry,
             },
