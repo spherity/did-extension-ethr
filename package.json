@@ -49,7 +49,9 @@
     "express": "^4.18.2",
     "ganache": "7.7.4"
   },
-  "resolutions": {
-    "did-jwt": "6.9.0"
+  "overrides": {
+    "did-jwt-vc": {
+      "did-jwt": "6.9.0"
+    }
   }
 }
