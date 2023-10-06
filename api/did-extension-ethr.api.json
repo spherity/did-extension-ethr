@@ -1,8 +1,8 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.25.0",
-    "schemaVersion": 1006,
+    "toolVersion": "7.38.0",
+    "schemaVersion": 1011,
     "oldestForwardsCompatibleVersion": 1001,
     "tsdocConfig": {
       "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
@@ -164,11 +164,13 @@
   "canonicalReference": "@spherity/did-extension-ethr!",
   "docComment": "",
   "name": "@spherity/did-extension-ethr",
+  "preserveMemberOrder": false,
   "members": [
     {
       "kind": "EntryPoint",
       "canonicalReference": "@spherity/did-extension-ethr!",
       "name": "",
+      "preserveMemberOrder": false,
       "members": [
         {
           "kind": "Class",
@@ -182,15 +184,18 @@
             {
               "kind": "Reference",
               "text": "IAgentPlugin",
-              "canonicalReference": "@veramo/core!IAgentPlugin:interface"
+              "canonicalReference": "@veramo/core-types!IAgentPlugin:interface"
             },
             {
               "kind": "Content",
               "text": " "
             }
           ],
+          "fileUrlPath": "src/agent/did-extension-ethr.ts",
           "releaseTag": "Beta",
+          "isAbstract": false,
           "name": "EthrDidExtension",
+          "preserveMemberOrder": false,
           "members": [
             {
               "kind": "Constructor",
@@ -270,7 +275,8 @@
                 "endIndex": 2
               },
               "isStatic": false,
-              "isProtected": false
+              "isProtected": false,
+              "isAbstract": false
             },
             {
               "kind": "Property",
@@ -283,7 +289,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "any"
+                  "text": "{\n        components: {\n            schemas: {\n                IEthrChangeControllerKeyArgs: {\n                    type: string;\n                    properties: {\n                        did: {\n                            type: string;\n                            description: string;\n                        };\n                        kid: {\n                            type: string;\n                            description: string;\n                        };\n                        options: {\n                            $ref: string;\n                            description: string;\n                        };\n                    };\n                    required: string[];\n                    description: string;\n                };\n                TransactionOptions: {\n                    type: string;\n                    properties: {\n                        ttl: {\n                            type: string;\n                        };\n                        encoding: {\n                            type: string;\n                        };\n                        metaIdentifierKeyId: {\n                            type: string;\n                        };\n                        gasLimit: {};\n                        gasPrice: {};\n                    };\n                    description: string;\n                };\n            };\n            methods: {\n                ethrChangeControllerKey: {\n                    description: string;\n                    arguments: {\n                        $ref: string;\n                    };\n                    returnType: {\n                        type: string;\n                    };\n                };\n            };\n        };\n    }"
                 },
                 {
                   "kind": "Content",
@@ -299,7 +305,8 @@
                 "endIndex": 2
               },
               "isStatic": false,
-              "isProtected": false
+              "isProtected": false,
+              "isAbstract": false
             }
           ],
           "implementsTokenRanges": [
@@ -319,8 +326,10 @@
               "text": "export interface EthrNetworkConfiguration "
             }
           ],
+          "fileUrlPath": "src/types/IEthrDidExtension.ts",
           "releaseTag": "Beta",
           "name": "EthrNetworkConfiguration",
+          "preserveMemberOrder": false,
           "members": [
             {
               "kind": "IndexSignature",
@@ -348,6 +357,7 @@
                   "text": ";"
                 }
               ],
+              "isReadonly": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 4
@@ -376,7 +386,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "string | number"
+                  "text": "string | bigint"
                 },
                 {
                   "kind": "Content",
@@ -431,7 +441,7 @@
                 {
                   "kind": "Reference",
                   "text": "Provider",
-                  "canonicalReference": "@ethersproject/abstract-provider!Provider:class"
+                  "canonicalReference": "ethers!Provider:interface"
                 },
                 {
                   "kind": "Content",
@@ -513,7 +523,7 @@
                 {
                   "kind": "Reference",
                   "text": "Provider",
-                  "canonicalReference": "@ethersproject/abstract-provider!Provider:class"
+                  "canonicalReference": "ethers!Provider:interface"
                 },
                 {
                   "kind": "Content",
@@ -542,8 +552,10 @@
               "text": "export interface IEthrChangeControllerKeyArgs "
             }
           ],
+          "fileUrlPath": "src/types/IEthrDidExtension.ts",
           "releaseTag": "Beta",
           "name": "IEthrChangeControllerKeyArgs",
+          "preserveMemberOrder": false,
           "members": [
             {
               "kind": "PropertySignature",
@@ -642,15 +654,17 @@
             {
               "kind": "Reference",
               "text": "IPluginMethodMap",
-              "canonicalReference": "@veramo/core!IPluginMethodMap:interface"
+              "canonicalReference": "@veramo/core-types!IPluginMethodMap:interface"
             },
             {
               "kind": "Content",
               "text": " "
             }
           ],
+          "fileUrlPath": "src/types/IEthrDidExtension.ts",
           "releaseTag": "Beta",
           "name": "IEthrDidExtension",
+          "preserveMemberOrder": false,
           "members": [
             {
               "kind": "MethodSignature",
@@ -740,7 +754,7 @@
             {
               "kind": "Reference",
               "text": "IAgentContext",
-              "canonicalReference": "@veramo/core!IAgentContext:interface"
+              "canonicalReference": "@veramo/core-types!IAgentContext:interface"
             },
             {
               "kind": "Content",
@@ -749,7 +763,7 @@
             {
               "kind": "Reference",
               "text": "IKeyManager",
-              "canonicalReference": "@veramo/core!IKeyManager:interface"
+              "canonicalReference": "@veramo/core-types!IKeyManager:interface"
             },
             {
               "kind": "Content",
@@ -758,7 +772,7 @@
             {
               "kind": "Reference",
               "text": "IDIDManager",
-              "canonicalReference": "@veramo/core!IDIDManager:interface"
+              "canonicalReference": "@veramo/core-types!IDIDManager:interface"
             },
             {
               "kind": "Content",
@@ -769,33 +783,12 @@
               "text": ";"
             }
           ],
+          "fileUrlPath": "src/types/IEthrDidExtension.ts",
           "releaseTag": "Beta",
           "name": "IRequiredContext",
           "typeTokenRange": {
             "startIndex": 1,
             "endIndex": 7
-          }
-        },
-        {
-          "kind": "Variable",
-          "canonicalReference": "@spherity/did-extension-ethr!schema:var",
-          "docComment": "/**\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "schema: "
-            },
-            {
-              "kind": "Content",
-              "text": "any"
-            }
-          ],
-          "isReadonly": true,
-          "releaseTag": "Public",
-          "name": "schema",
-          "variableTypeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 2
           }
         },
         {
@@ -808,8 +801,10 @@
               "text": "export interface TransactionOptions "
             }
           ],
+          "fileUrlPath": "src/types/IEthrDidExtension.ts",
           "releaseTag": "Beta",
           "name": "TransactionOptions",
+          "preserveMemberOrder": false,
           "members": [
             {
               "kind": "PropertySignature",

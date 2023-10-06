@@ -5,3 +5,4 @@ database.sqlite
 tsconfig.tsbuildinfo
 .idea/
 .DS_Store
+lib

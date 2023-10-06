@@ -10,7 +10,7 @@ import { IAgentPlugin } from '@veramo/core';
 import { IDIDManager } from '@veramo/core';
 import { IKeyManager } from '@veramo/core';
 import { IPluginMethodMap } from '@veramo/core';
-import { Provider } from '@ethersproject/abstract-provider';
+import { Provider } from 'ethers';
 
 // @beta
 export class EthrDidExtension implements IAgentPlugin {
@@ -22,14 +22,66 @@ export class EthrDidExtension implements IAgentPlugin {
     // (undocumented)
     readonly methods: IEthrDidExtension;
     // (undocumented)
-    readonly schema: any;
+    readonly schema: {
+        components: {
+            schemas: {
+                IEthrChangeControllerKeyArgs: {
+                    type: string;
+                    properties: {
+                        did: {
+                            type: string;
+                            description: string;
+                        };
+                        kid: {
+                            type: string;
+                            description: string;
+                        };
+                        options: {
+                            $ref: string;
+                            description: string;
+                        };
+                    };
+                    required: string[];
+                    description: string;
+                };
+                TransactionOptions: {
+                    type: string;
+                    properties: {
+                        ttl: {
+                            type: string;
+                        };
+                        encoding: {
+                            type: string;
+                        };
+                        metaIdentifierKeyId: {
+                            type: string;
+                        };
+                        gasLimit: {};
+                        gasPrice: {};
+                    };
+                    description: string;
+                };
+            };
+            methods: {
+                ethrChangeControllerKey: {
+                    description: string;
+                    arguments: {
+                        $ref: string;
+                    };
+                    returnType: {
+                        type: string;
+                    };
+                };
+            };
+        };
+    };
 }
 
 // @beta
 export interface EthrNetworkConfiguration {
     // (undocumented)
     [index: string]: any;
-    chainId?: string | number;
+    chainId?: string | bigint;
     name?: string;
     provider?: Provider;
     registry?: string;
@@ -51,9 +103,6 @@ export interface IEthrDidExtension extends IPluginMethodMap {
 
 // @beta
 export type IRequiredContext = IAgentContext<IKeyManager & IDIDManager>;
-
-// @public (undocumented)
-export const schema: any;
 
 // @beta
 export interface TransactionOptions {

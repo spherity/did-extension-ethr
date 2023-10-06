@@ -1,5 +1,5 @@
 import { IPluginMethodMap, IAgentContext, IDIDManager, IKeyManager } from '@veramo/core'
-import { Provider } from '@ethersproject/abstract-provider'
+import { Provider } from 'ethers'
 
 /**
  * Extension of did-provider-ethr with method-specific features.
@@ -111,7 +111,7 @@ export interface EthrNetworkConfiguration {
    *
    * Example, chainId==42 and name==undefined => DIDs are prefixed with `did:ethr:0x2a:`
    */
-  chainId?: string | number
+  chainId?: string | bigint
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [index: string]: any

@@ -101,7 +101,7 @@ const setup = async (options?: IAgentOptions): Promise<boolean> => {
         defaultKms: 'local',
         networks: [
           {
-            chainId: 1337,
+            chainId: BigInt(1337),
             name: 'ganache',
             provider,
             registry,
@@ -114,7 +114,7 @@ const setup = async (options?: IAgentOptions): Promise<boolean> => {
           networks: [
             {
               name: 'ganache',
-              chainId: 1337,
+              chainId: BigInt(1337),
               provider,
               registry,
             },
