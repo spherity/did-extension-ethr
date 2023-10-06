@@ -40,7 +40,7 @@
       "request": "launch",
       "name": "debug integration tests",
       "program": "${workspaceFolder}/node_modules/.bin/jest",
-      "args": ["--runInBand", "--coverage=false", "--config=jest.json"],
+      "args": ["--runInBand", "--coverage=false", "--config=jest.config.json"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true,

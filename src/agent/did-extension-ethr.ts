@@ -6,7 +6,7 @@ import {
   IEthrDidExtension,
   IRequiredContext,
 } from '../types/IEthrDidExtension'
-import { schema } from '../index'
+import schema from "../plugin.schema.json" assert { type: 'json' }
 import { computeAddress, Signature } from 'ethers'
 import { KmsEthereumSigner } from './kms-eth-signer'
 import { EthrDID } from 'ethr-did'

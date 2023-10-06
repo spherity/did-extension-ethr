@@ -12,12 +12,13 @@
   "scripts": {
     "build": "tsc",
     "generate-plugin-schema": "veramo dev generate-plugin-schema",
-    "start": "veramo server",
     "build:watch": "tsc -b --watch",
-    "test:ci": "jest --config=jest.json",
-    "test": "jest --config=jest.json --coverage=false",
+    "test:ci": "jest --config=jest.config.json",
     "test:watch": "npm run test --watch --verbose",
-    "clean": "rm -rf tmp && rm database.sqlite && rm -rf build && rm tsconfig.tsbuildinfo"
+    "clean": "rm -rf tmp && rm database.sqlite && rm -rf build && rm tsconfig.tsbuildinfo",
+    "test": "NODE_OPTIONS=\"--experimental-vm-modules\" jest",
+    "start:tsnode": "ts-node --esm src/index.ts --config=jest.config.json --coverage=false",
+    "start": "node --no-warnings --loader ts-node/esm src/index.ts"
   },
   "license": "MIT",
   "devDependencies": {
@@ -30,7 +31,7 @@
   "files": [
     "build/**/*",
     "README.md",
-    "plugin.schema.json",
+    "src/plugin.schema.json",
     "LICENSE"
   ],
   "dependencies": {

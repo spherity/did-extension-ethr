@@ -21,6 +21,7 @@ import { EthrDIDProvider } from '@veramo/did-provider-ethr'
 import { DIDResolverPlugin } from '@veramo/did-resolver'
 import { getResolver as ethrDidResolver } from 'ethr-did-resolver'
 import { EthrDidExtension } from '../src'
+import { jest } from '@jest/globals'
 
 jest.setTimeout(30000)
 
