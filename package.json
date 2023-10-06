@@ -50,6 +50,6 @@
     "ganache": "7.7.4"
   },
   "resolutions": {
-    "did-jwt-vc": "3.1.0"
+    "did-jwt": "6.9.0"
   }
 }
