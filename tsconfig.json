@@ -1,23 +1,23 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
+    "strict": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true,
-    "strict": true,
-    "moduleResolution": "node",
-    "types": ["jest"],
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "outDir": "lib"
+    "outDir": "build",
+    "skipLibCheck": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "lib", "**/__tests__"],
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node"
-  }
+  "exclude": [
+    "**/__tests__/**/*",
+    "**/build/**/*"
+  ],
+  "include": [
+    "src/**/*"
+  ]
 }
