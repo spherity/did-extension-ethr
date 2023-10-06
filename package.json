@@ -13,7 +13,7 @@
     "build": "tsc",
     "generate-plugin-schema": "veramo dev generate-plugin-schema",
     "build:watch": "tsc -b --watch",
-    "test:ci": "jest --config=jest.config.json",
+    "test:ci": "npm run test  --coverage=true",
     "test:watch": "npm run test --watch --verbose",
     "clean": "rm -rf tmp && rm database.sqlite && rm -rf build && rm tsconfig.tsbuildinfo",
     "test": "NODE_OPTIONS=\"--experimental-vm-modules\" jest",
