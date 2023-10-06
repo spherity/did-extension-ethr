@@ -9,7 +9,7 @@ import {
 import { schema } from '../index'
 import { computeAddress, Signature } from 'ethers'
 import { KmsEthereumSigner } from './kms-eth-signer'
-import { EthrDID } from '@spherity/ethr-did'
+import { EthrDID } from 'ethr-did'
 
 export const DEFAULT_GAS_LIMIT = 100000
 
@@ -35,7 +35,7 @@ export class EthrDidExtension implements IAgentPlugin {
 
   /** {@inheritDoc IEthrDidExtension.ethrChangeControllerKey} */
   private async ethrChangeControllerKey(args: IEthrChangeControllerKeyArgs, context: IRequiredContext): Promise<string> {
-    const identifier = await this.store.get({ did: args.did })
+    const identifier = await this.store.getDID({ did: args.did })
     const newOwnerKey = await context.agent.keyManagerGet({ kid: args.kid })
     const gasLimit = args.options?.gasLimit || DEFAULT_GAS_LIMIT
 
@@ -69,7 +69,7 @@ export class EthrDidExtension implements IAgentPlugin {
     identifier.keys = identifier.keys.filter((key) => key.kid !== identifier.controllerKeyId)
     identifier.controllerKeyId = args.kid
     identifier.keys.push(newOwnerKey)
-    await this.store.import(identifier)
+    await this.store.importDID(identifier)
 
     return txHash
   }

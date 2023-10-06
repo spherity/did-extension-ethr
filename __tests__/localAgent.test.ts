@@ -19,7 +19,7 @@ import { createGanacheProvider } from './utils/ganache-provider'
 import fs from 'fs'
 import { EthrDIDProvider } from '@veramo/did-provider-ethr'
 import { DIDResolverPlugin } from '@veramo/did-resolver'
-import { getResolver as ethrDidResolver } from '@spherity/ethr-did-resolver'
+import { getResolver as ethrDidResolver } from 'ethr-did-resolver'
 import { EthrDidExtension } from '../src'
 
 jest.setTimeout(30000)
