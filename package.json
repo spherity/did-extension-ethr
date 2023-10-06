@@ -51,7 +51,9 @@
   },
   "overrides": {
     "did-jwt-vc": {
-      "did-jwt": "6.9.0"
+      "did-jwt": {
+        "uint8arrays": "3.1.1"
+      }
     }
   }
 }
