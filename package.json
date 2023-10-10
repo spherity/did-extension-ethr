@@ -1,6 +1,7 @@
 {
   "name": "@spherity/did-extension-ethr",
   "version": "2.0.0",
+  "type": "module",
   "source": "src/index.ts",
   "main": "build/index.js",
   "types": "build/index.d.ts",
