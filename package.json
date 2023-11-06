@@ -11,7 +11,7 @@
     }
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run build:esmfix",
     "generate-plugin-schema": "veramo dev generate-plugin-schema",
     "build:watch": "tsc -b --watch",
     "test:ci": "npm run test  --coverage=true",
@@ -19,7 +19,8 @@
     "clean": "rm -rf tmp && rm database.sqlite && rm -rf build && rm tsconfig.tsbuildinfo",
     "test": "NODE_OPTIONS=\"--experimental-vm-modules\" jest",
     "start:tsnode": "ts-node --esm src/index.ts --config=jest.config.json --coverage=false",
-    "start": "node --no-warnings --loader ts-node/esm src/index.ts"
+    "start": "node --no-warnings --loader ts-node/esm src/index.ts",
+    "build:esmfix": "npx tsc-esm-fix --ext=\".js\" --target=\"build/\""
   },
   "license": "MIT",
   "devDependencies": {
@@ -27,6 +28,7 @@
     "@veramo/cli": "^5.5.2-next.16",
     "jest": "29.3.1",
     "ts-jest": "29.0.3",
+    "tsc-esm-fix": "^2.20.17",
     "typescript": "4.9.3"
   },
   "files": [
