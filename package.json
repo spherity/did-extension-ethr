@@ -1,6 +1,6 @@
 {
   "name": "@spherity/did-extension-ethr",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "type": "module",
   "source": "src/index.ts",
   "main": "build/index.js",
@@ -24,12 +24,16 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^3.0.8",
+    "hardhat": "^2.22.15",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@types/jest": "29.2.3",
     "@veramo/cli": "^5.5.2-next.16",
     "jest": "29.3.1",
     "ts-jest": "29.0.3",
     "tsc-esm-fix": "^2.20.17",
-    "typescript": "4.9.3"
+    "typescript": "4.9.3",
+    "express": "^4.18.2"
   },
   "files": [
     "build/**/*",
@@ -47,11 +51,9 @@
     "@veramo/kms-local": "^5.5.2-next.16",
     "@veramo/remote-client": "^5.5.2-next.16",
     "@veramo/remote-server": "^5.5.2-next.16",
-    "ethers": "^6.7.1",
+    "ethers": "^6.13.4",
     "ethr-did": "^3.0.1",
-    "ethr-did-resolver": "^9.0.0",
-    "express": "^4.18.2",
-    "ganache": "7.7.4"
+    "ethr-did-resolver": "^11.0.0"
   },
   "overrides": {
     "did-jwt-vc": {

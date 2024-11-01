@@ -22,8 +22,8 @@ export default (testContext: {
 
       alice = await agent.didManagerImport({
         controllerKeyId: 'alice-controller-key',
-        did: 'did:ethr:ganache:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798',
-        provider: 'did:ethr:ganache',
+        did: 'did:ethr:hardhat:0x0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798',
+        provider: 'did:ethr:hardhat',
         alias: 'alice-did-ethr',
         keys: [
           {
@@ -36,8 +36,8 @@ export default (testContext: {
       })
       bob = await agent.didManagerImport({
         controllerKeyId: 'bob-controller-key',
-        did: 'did:ethr:ganache:0x02c6047f9441ed7d6d3045406e95c07cd85c778e4b8cef3ca7abac09b95c709ee5',
-        provider: 'did:ethr:ganache',
+        did: 'did:ethr:hardhat:0x02c6047f9441ed7d6d3045406e95c07cd85c778e4b8cef3ca7abac09b95c709ee5',
+        provider: 'did:ethr:hardhat',
         alias: 'bob-did-ethr',
         keys: [
           {
@@ -50,8 +50,8 @@ export default (testContext: {
       })
       erika = await agent.didManagerImport({
         controllerKeyId: 'erika-controller-key',
-        did: 'did:ethr:ganache:0x02f9308a019258c31049344f85f89d5229b531c845836f99b08601f113bce036f9',
-        provider: 'did:ethr:ganache',
+        did: 'did:ethr:hardhat:0x02f9308a019258c31049344f85f89d5229b531c845836f99b08601f113bce036f9',
+        provider: 'did:ethr:hardhat',
         alias: 'erika-did-ethr',
         keys: [
           {
@@ -64,8 +64,8 @@ export default (testContext: {
       })
       klaus = await agent.didManagerImport({
         controllerKeyId: 'klaus-controller-key',
-        did: 'did:ethr:ganache:0x02e493dbf1c10d80f3581e4904930b1404cc6c13900ee0758474fa94abe8c4cd13',
-        provider: 'did:ethr:ganache',
+        did: 'did:ethr:hardhat:0x02e493dbf1c10d80f3581e4904930b1404cc6c13900ee0758474fa94abe8c4cd13',
+        provider: 'did:ethr:hardhat',
         alias: 'klaus-did-ethr',
         keys: [
           {
@@ -100,7 +100,7 @@ export default (testContext: {
 
       expect(updatedBobDidDoc.didDocument!.verificationMethod![1].id).toContain("delegate-1")
       expect(updatedBobDidDoc.didDocument!.verificationMethod![1].type).toEqual("EcdsaSecp256k1VerificationKey2019")
-    })
+    }, 10000)
 
     it('should throw an error if key is not Secp256k1', async () => {
       const newKey = await agent.keyManagerCreate({ kms: 'local', type: 'Ed25519' })
