@@ -80,15 +80,15 @@ const setup = async (options?: IAgentOptions): Promise<boolean> => {
       }),
       new DIDManager({
         store: didStore,
-        defaultProvider: 'did:ethr:ganache',
+        defaultProvider: 'did:ethr:hardhat',
         providers: {
-          'did:ethr': new EthrDIDProvider({
+          'did:ethr:hardhat': new EthrDIDProvider({
             defaultKms: 'local',
             ttl: 60 * 60 * 24 * 30 * 12 + 1,
             networks: [
               {
                 chainId: 1337,
-                name: 'ganache',
+                name: 'hardhat',
                 provider,
                 registry,
               },
@@ -102,7 +102,7 @@ const setup = async (options?: IAgentOptions): Promise<boolean> => {
         networks: [
           {
             chainId: BigInt(1337),
-            name: 'ganache',
+            name: 'hardhat',
             provider,
             registry,
           },
@@ -113,7 +113,7 @@ const setup = async (options?: IAgentOptions): Promise<boolean> => {
           infuraProjectId,
           networks: [
             {
-              name: 'ganache',
+              name: 'hardhat',
               chainId: BigInt(1337),
               provider,
               registry,
