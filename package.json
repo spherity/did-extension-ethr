@@ -51,9 +51,9 @@
     "@veramo/kms-local": "^5.5.2-next.16",
     "@veramo/remote-client": "^5.5.2-next.16",
     "@veramo/remote-server": "^5.5.2-next.16",
-    "ethers": "^6.7.1",
+    "ethers": "^6.13.4",
     "ethr-did": "^3.0.1",
-    "ethr-did-resolver": "^9.0.0"
+    "ethr-did-resolver": "^11.0.0"
   },
   "overrides": {
     "did-jwt-vc": {
