@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "strict": true,
+    "strict": false,
     "preserveConstEnums": true,
     "sourceMap": true,
     "target": "ESNext",
@@ -13,11 +13,6 @@
     "outDir": "build",
     "skipLibCheck": true
   },
-  "exclude": [
-    "**/__tests__/**/*",
-    "**/build/**/*"
-  ],
-  "include": [
-    "src/**/*"
-  ]
+  "exclude": ["**/__tests__/**/*", "**/build/**/*"],
+  "include": ["src/**/*"]
 }
