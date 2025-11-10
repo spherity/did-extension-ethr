@@ -21,13 +21,12 @@ import { IKey } from '@veramo/core'
 export class KmsEthereumSigner extends AbstractSigner {
   private context: IRequiredContext
   private controllerKey: IKey
-  readonly provider: Provider
+  declare readonly provider: Provider
 
   constructor(controllerKey: IKey, context: IRequiredContext, provider: Provider) {
     super(provider)
     this.controllerKey = controllerKey
     this.context = context
-    this.provider = provider
   }
 
   async getAddress(): Promise<string> {

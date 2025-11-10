@@ -1,4 +1,3 @@
-import { HardhatEthersProvider } from '@nomicfoundation/hardhat-ethers/internal/hardhat-ethers-provider'
 import { BrowserProvider } from 'ethers';
 import { Contract, ContractFactory } from 'ethers'
 import { EthereumDIDRegistry } from 'ethr-did-resolver'

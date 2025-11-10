@@ -139,6 +139,7 @@ const setup = async (options?: IAgentOptions): Promise<boolean> => {
     const app = express()
     app.use(basePath, requestWithAgent, agentRouter)
     restServer = app.listen(port, () => {
+
       resolve(true)
     })
   })

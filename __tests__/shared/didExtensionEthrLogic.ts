@@ -95,6 +95,7 @@ export default (testContext: {
     it('should allow new owner to make changes', async () => {
       const aliceKey = await agent.keyManagerGet({ kid: alice.controllerKeyId! })
       await agent.ethrChangeControllerKey({ did: bob.did, kid: alice.controllerKeyId! })
+      await new Promise((resolve) => setTimeout(resolve, 1000)) // wait for the change to be mined
       await agent.didManagerAddKey({ did: bob.did, key: aliceKey })
       const updatedBobDidDoc = await agent.resolveDid({ didUrl: bob.did })
 
